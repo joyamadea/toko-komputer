@@ -1,0 +1,7 @@
+{
+  "name": "toko-komputer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
