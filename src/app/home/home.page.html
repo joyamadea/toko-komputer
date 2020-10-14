@@ -18,20 +18,22 @@
     <ion-row *ngIf="viewList">
       <ion-col>
         <ion-list>
-          <ion-item
-            *ngFor="let product of products"
-            [routerLink]="['product-detail/',product.id]"
-          >
-            <ion-thumbnail slot="start">
-              <img [src]="product.image_url" />
-            </ion-thumbnail>
-            <ion-label>
-              <h2>{{product.name}}</h2>
-              <p>Rp. {{ product.price | number}}</p>
-              <p>Tersedia: {{ product.stock }}</p>
-            </ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-          </ion-item>
+          <div *ngFor="let product of products">
+            <ion-item
+              *ngIf="product.stock != 0"
+              [routerLink]="['product-detail/',product.id]"
+            >
+              <ion-thumbnail slot="start">
+                <img [src]="product.image_url" />
+              </ion-thumbnail>
+              <ion-label>
+                <h2>{{product.name}}</h2>
+                <p>Rp. {{ product.price | number}}</p>
+                <p>Tersedia: {{ product.stock }}</p>
+              </ion-label>
+              <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+            </ion-item>
+          </div>
         </ion-list>
       </ion-col>
     </ion-row>

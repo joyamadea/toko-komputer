@@ -17,6 +17,8 @@
     <ion-row>
       <ion-col>
         <ion-list>
+          <ion-img [src]="product.image_url" width="500"></ion-img>
+
           <ion-item>
             <ion-label class="ion-text-wrap">
               <ion-text color="primary">
@@ -36,6 +38,12 @@
           </ion-item>
           <ion-item lines="none">
             <ion-label>
+              <ion-text *ngIf="product.description.brand != null"
+                ><p>{{product.description.brand}}</p></ion-text
+              >
+              <ion-text *ngIf="product.description.modelS != null"
+                ><p>{{product.description.model}}</p></ion-text
+              >
               <ion-text *ngIf="product.description.base_clock != null"
                 ><p>{{product.description.base_clock}}</p></ion-text
               >

@@ -5,13 +5,15 @@ export interface Product {
   stock: number;
   price: number;
   type: string;
+  brand: string;
+  model: string;
   description: {
-    base_clock: string;
-    boost_clock: string;
+    base_clock: number;
+    boost_clock: number;
     core: number;
     thread: number;
-    speed: number;
-    size: number;
+    speed: string;
+    size: string;
     chipset: string;
     compatibility: string;
   };
