@@ -26,7 +26,7 @@ export class AdminPage implements OnInit {
 
   deleteProduct(id) {
     this.shopService.deleteProduct(id);
-    // location.reload();
+    this.ionViewWillEnter();
     this.presentToast();
   }
 
