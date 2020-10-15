@@ -1,0 +1,162 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Product</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Merek</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="product.brand"
+          name="brand"
+          #brandCtrl="ngModel"
+          required
+          brand
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Model</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="product.model"
+          name="model"
+          #modelCtrl="ngModel"
+          required
+          model
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">URL Foto</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="product.image_url"
+          name="url"
+          #urlCtrl="ngModel"
+          required
+          url
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Harga</ion-label>
+        <ion-input
+          type="number"
+          [(ngModel)]="product.price"
+          name="price"
+          #priceCtrl="ngModel"
+          required
+          price
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Stok</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="product.stock"
+          name="stock"
+          #stockCtrl="ngModel"
+          required
+          stock
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="product.type == 'CPU'">
+        <ion-label position="stacked">Base Clock</ion-label>
+        <ion-input
+          type="number"
+          [(ngModel)]="product.description.base_clock"
+          name="baseClock"
+          #baseClockCtrl="ngModel"
+          required
+          baseClock
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="product.type == 'CPU'">
+        <ion-label position="stacked">Boost Clock</ion-label>
+        <ion-input
+          type="number"
+          [(ngModel)]="product.description.boost_clock"
+          name="boostClock"
+          #boostClockCtrl="ngModel"
+          required
+          boostClock
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="product.type == 'CPU'">
+        <ion-label position="stacked">Core</ion-label>
+        <ion-input
+          type="number"
+          [(ngModel)]="product.description.core"
+          name="core"
+          #coreCtrl="ngModel"
+          required
+          core
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="product.type == 'CPU'">
+        <ion-label position="stacked">Thread</ion-label>
+        <ion-input
+          type="number"
+          [(ngModel)]="product.description.thread"
+          name="thread"
+          #threadCtrl="ngModel"
+          required
+          thread
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="product.type == 'RAM'">
+        <ion-label position="stacked">Speed</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="product.description.speed"
+          name="speed"
+          #speedCtrl="ngModel"
+          required
+          speed
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="product.type == 'RAM'">
+        <ion-label position="stacked">Size</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="product.description.size"
+          name="size"
+          #sizeCtrl="ngModel"
+          required
+          size
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="product.type == 'Motherboard'">
+        <ion-label position="stacked">Chipset</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="product.description.chipset"
+          name="chipset"
+          #chipsetCtrl="ngModel"
+          required
+          chipset
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="product.type == 'Motherboard'">
+        <ion-label position="stacked">Compatibility</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="product.description.compatibility"
+          name="compatibility"
+          #compatibilityCtrl="ngModel"
+          required
+          compatibility
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button type="submit" [disabled]="!form.valid" expand="block"
+      >Edit Product</ion-button
+    >
+  </form>
+</ion-content>

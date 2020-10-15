@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Product } from "../model/product.model";
-import { ProductDetail } from "../model/product-description.model";
 
 @Injectable({
   providedIn: "root",
@@ -92,7 +92,7 @@ export class ShopService {
       },
     },
   ];
-  constructor() {}
+  constructor(private router: Router) {}
 
   getAllProducts() {
     return this.shop;
@@ -102,5 +102,23 @@ export class ShopService {
     return this.shop.find((shop) => {
       return shop.id === id;
     });
+  }
+
+  deleteProduct(id) {
+    this.shop = this.shop.filter((shop) => {
+      return shop.id !== id;
+    });
+  }
+
+  getNewId() {
+    return this.shop.length + 1;
+  }
+
+  addProduct(data) {
+    this.shop.push(data);
+  }
+
+  editProduct(obj, id) {
+    this.shop[id - 1] = obj;
   }
 }
