@@ -18,13 +18,13 @@
       <ion-col>
         <ion-list>
           <div *ngFor="let product of products">
-            <ion-item-sliding *ngIf="product.stock != 0">
-              <ion-item>
+            <ion-item-sliding>
+              <ion-item [routerLink]="['./edit-product', product.id]">
                 <ion-thumbnail slot="start">
                   <img [src]="product.image_url" />
                 </ion-thumbnail>
                 <ion-label>
-                  <h2>{{product.name}}</h2>
+                  <h2>{{ product.brand }} {{ product.model}}</h2>
                   <p>Rp. {{ product.price | number}}</p>
                   <p>Tersedia: {{ product.stock }}</p>
                 </ion-label>

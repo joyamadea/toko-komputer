@@ -11,6 +11,23 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <ion-list>
       <ion-item>
+        <ion-label position="stacked">Jenis Barang</ion-label>
+        <ion-select
+          interface="action-sheet"
+          [(ngModel)]="product.type"
+          [disabled]="true"
+          name="type"
+          #typeCtrl="ngModel"
+          required
+          type
+        >
+        <ion-select-option value="CPU">CPU</ion-select-option>
+        <ion-select-option value="GPU">GPU</ion-select-option>
+        <ion-select-option value="RAM">RAM</ion-select-option>
+        <ion-select-option value="Motherboard">Motherboard</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
         <ion-label position="stacked">Merek</ion-label>
         <ion-input
           type="text"
@@ -34,39 +51,43 @@
       </ion-item>
       <ion-item>
         <ion-label position="stacked">URL Foto</ion-label>
-        <ion-input
-          type="text"
+        <ion-textarea
           [(ngModel)]="product.image_url"
           name="url"
           #urlCtrl="ngModel"
+          auto-grow="true"
+          rows="1"
           required
           url
-        ></ion-input>
+        ></ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Harga</ion-label>
         <ion-input
-          type="number"
+          type="tel"
           [(ngModel)]="product.price"
           name="price"
           #priceCtrl="ngModel"
           required
+          maxLength="9"
           price
         ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Stok</ion-label>
         <ion-input
-          type="text"
+          type="tel"
           [(ngModel)]="product.stock"
           name="stock"
           #stockCtrl="ngModel"
+          maxLength="12"
           required
           stock
         ></ion-input>
       </ion-item>
       <ion-item *ngIf="product.type == 'CPU'">
         <ion-label position="stacked">Base Clock</ion-label>
+        <ion-note slot="end">GHz</ion-note>
         <ion-input
           type="number"
           [(ngModel)]="product.description.base_clock"
@@ -78,6 +99,7 @@
       </ion-item>
       <ion-item *ngIf="product.type == 'CPU'">
         <ion-label position="stacked">Boost Clock</ion-label>
+        <ion-note slot="end">GHz</ion-note>
         <ion-input
           type="number"
           [(ngModel)]="product.description.boost_clock"

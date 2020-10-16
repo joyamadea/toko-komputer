@@ -19,15 +19,12 @@
       <ion-col>
         <ion-list>
           <div *ngFor="let product of products">
-            <ion-item
-              *ngIf="product.stock != 0"
-              [routerLink]="['product-detail/',product.id]"
-            >
+            <ion-item [routerLink]="['product-detail/',product.id]" *ngIf="product.stock != 0">
               <ion-thumbnail slot="start">
                 <img [src]="product.image_url" />
               </ion-thumbnail>
               <ion-label>
-                <h2>{{product.name}}</h2>
+                <h2>{{ product.brand }} {{ product.model}}</h2>
                 <p>Rp. {{ product.price | number}}</p>
                 <p>Tersedia: {{ product.stock }}</p>
               </ion-label>
@@ -40,10 +37,12 @@
 
     <ion-row *ngIf="!viewList">
       <ion-col size="6" *ngFor="let product of products">
-        <ion-card [routerLink]="['product-detail/',product.id]">
+        <ion-card [routerLink]="['product-detail/',product.id]" *ngIf="product.stock != 0">
           <img [src]="product.image_url" />
           <ion-card-header>
-            <ion-card-title>{{ product.name }}</ion-card-title>
+            <ion-card-title
+              >{{ product.brand }} {{ product.model}}</ion-card-title
+            >
           </ion-card-header>
           <ion-card-content>
             Rp. {{ product.price | number }}

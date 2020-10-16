@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { AlertController, ToastController } from '@ionic/angular';
 import { Product } from "src/app/model/product.model";
 import { ShopService } from "src/app/services/shop.service";
 
@@ -15,7 +16,9 @@ export class EditProductPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private shopService: ShopService,
-    private router: Router
+    private router: Router,
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController
   ) {}
 
   ngOnInit() {
@@ -29,10 +32,13 @@ export class EditProductPage implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    this.confirmEdit(form);
+  }
+
+  editProduct(form: NgForm){
     this.obj = {
       id: this.product.id,
       image_url: form.value.url,
-      name: form.value.brand + " " + form.value.model,
       stock: form.value.stock,
       price: form.value.price,
       type: this.product.type,
@@ -50,8 +56,42 @@ export class EditProductPage implements OnInit {
       },
     };
 
-    console.log(this.obj);
     this.shopService.editProduct(this.obj, this.product.id);
     this.router.navigate(["/admin"]);
+    
+    this.presentToast();
+  }
+
+  async confirmEdit(form: NgForm) {
+    const alert = await this.alertCtrl.create({
+      header: "Confirm Edit",
+      message: "Save changes?",
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          handler: () => {
+            this.alertCtrl.dismiss();
+          },
+        },
+        {
+          text: "Save",
+          handler: () => {
+            this.editProduct(form);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async presentToast() {
+    const toast = await this.toastCtrl.create({
+      message: "Item successfully edited",
+      duration: 3000,
+      color: "success",
+    });
+    toast.present();
   }
 }

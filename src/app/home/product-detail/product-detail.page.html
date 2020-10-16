@@ -3,12 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button>
-        <ion-icon name="trash"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>{{ product.name }}</ion-title>
+    <ion-title>{{ product.brand }} {{ product.model}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,52 +17,123 @@
           <ion-item>
             <ion-label class="ion-text-wrap">
               <ion-text color="primary">
-                <h3>{{ product.name }}</h3>
+                <h2 style="font-weight: bold">
+                  {{ product.brand }} {{ product.model}}
+                </h2>
               </ion-text>
-              <p>{{ product.price | number}}</p>
-              <ion-text color="secondary">
-                <p>{{ product.stock }}</p>
-              </ion-text>
+              <p>Rp. {{ product.price | number}}</p>
+              <p>Stok: {{ product.stock }}</p>
             </ion-label>
           </ion-item>
 
           <ion-item>
             <ion-label>
-              <h2>Product Description</h2>
+              <p color="black">Product Description</p>
             </ion-label>
           </ion-item>
           <ion-item lines="none">
             <ion-label>
-              <ion-text *ngIf="product.brand != null"
-                ><p>{{product.brand}}</p></ion-text
-              >
-              <ion-text *ngIf="product.model != null"
-                ><p>{{product.model}}</p></ion-text
-              >
-              <ion-text *ngIf="product.description.base_clock != null"
-                ><p>{{product.description.base_clock}}</p></ion-text
-              >
-              <ion-text *ngIf="product.description.boost_clock != null"
-                ><p>{{product.description.boost_clock}}</p></ion-text
-              >
-              <ion-text *ngIf="product.description.core != null"
-                ><p>{{product.description.core}}</p></ion-text
-              >
-              <ion-text *ngIf="product.description.thread != null"
-                ><p>{{product.description.thread}}</p></ion-text
-              >
-              <ion-text *ngIf="product.description.speed != null"
-                ><p>{{product.description.speed}}</p></ion-text
-              >
-              <ion-text *ngIf="product.description.size != null"
-                ><p>{{product.description.size}}</p></ion-text
-              >
-              <ion-text *ngIf="product.description.chipset != null"
-                ><p>{{product.description.chipset}}</p></ion-text
-              >
-              <ion-text *ngIf="product.description.compatibility != null"
-                ><p>{{product.description.compatibility}}</p></ion-text
-              >
+              <ion-row *ngIf="product.brand != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text><p style="font-weight: bold">Brand</p></ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text><p>{{product.brand}}</p></ion-text>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="product.model != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text><p style="font-weight: bold">Model</p></ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text><p>{{product.model}}</p></ion-text>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="product.description.base_clock != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text
+                    ><p style="font-weight: bold">Base Clock</p></ion-text
+                  >
+                </ion-col>
+                <ion-col>
+                  <ion-text
+                    ><p>{{product.description.base_clock}} GHz</p></ion-text
+                  >
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="product.description.boost_clock != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text
+                    ><p style="font-weight: bold">Boost Clock</p></ion-text
+                  >
+                </ion-col>
+                <ion-col>
+                  <ion-text
+                    ><p>{{product.description.boost_clock}} GHz</p></ion-text
+                  >
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="product.description.core != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text><p style="font-weight: bold">Core</p></ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text><p>{{product.description.core}}</p></ion-text>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="product.description.thread != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text><p style="font-weight: bold">Thread</p></ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text><p>{{product.description.thread}}</p></ion-text>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="product.description.speed != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text><p style="font-weight: bold">Speed</p></ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text><p>{{product.description.speed}}</p></ion-text>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="product.description.size != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text><p style="font-weight: bold">Size</p></ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text><p>{{product.description.size}}</p></ion-text>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="product.description.chipset != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text><p style="font-weight: bold">Chipset</p></ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-text><p>{{product.description.chipset}}</p></ion-text>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf="product.description.compatibility != null">
+                <ion-col size="4" style="padding-left: 0px">
+                  <ion-text
+                    ><p style="font-weight: bold">Compatibility</p></ion-text
+                  >
+                </ion-col>
+                <ion-col>
+                  <ion-text
+                    ><p>{{product.description.compatibility}}</p></ion-text
+                  >
+                </ion-col>
+              </ion-row>
             </ion-label>
           </ion-item>
         </ion-list>

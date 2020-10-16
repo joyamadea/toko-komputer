@@ -11,20 +11,9 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <ion-list>
       <ion-item>
-        <ion-label position="stacked">URL Foto</ion-label>
-        <ion-textarea
-          type="text"
-          ngModel
-          name="url"
-          #urlCtrl="ngModel"
-          auto-grow="true"
-          required
-          url
-        ></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Tipe</ion-label>
+        <ion-label position="stacked">Jenis Barang</ion-label>
         <ion-select
+          placeholder="Pilih jenis barang"
           interface="action-sheet"
           [(ngModel)]="productType"
           name="type"
@@ -32,10 +21,10 @@
           required
           type
         >
-          <ion-select-option value="RAM">RAM</ion-select-option>
-          <ion-select-option value="Motherboard">Motherboard</ion-select-option>
           <ion-select-option value="CPU">CPU</ion-select-option>
           <ion-select-option value="GPU">GPU</ion-select-option>
+          <ion-select-option value="RAM">RAM</ion-select-option>
+          <ion-select-option value="Motherboard">Motherboard</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
@@ -61,12 +50,26 @@
         ></ion-input>
       </ion-item>
       <ion-item>
+        <ion-label position="stacked">URL Foto</ion-label>
+        <ion-textarea
+          type="text"
+          ngModel
+          name="url"
+          #urlCtrl="ngModel"
+          auto-grow="true"
+          rows="1"
+          required
+          url
+        ></ion-textarea>
+      </ion-item>
+      <ion-item>
         <ion-label position="stacked">Harga</ion-label>
         <ion-input
-          type="number"
+          type="tel"
           ngModel
           name="price"
           #priceCtrl="ngModel"
+          maxLength="9"
           required
           price
         ></ion-input>
@@ -74,16 +77,18 @@
       <ion-item>
         <ion-label position="stacked">Stok</ion-label>
         <ion-input
-          type="text"
+          type="tel"
           ngModel
           name="stock"
           #stockCtrl="ngModel"
+          maxLength="12"
           required
           stock
         ></ion-input>
       </ion-item>
       <ion-item *ngIf="productType == 'CPU'">
         <ion-label position="stacked">Base Clock</ion-label>
+        <ion-note slot="end">GHz</ion-note>
         <ion-input
           type="number"
           ngModel
@@ -95,6 +100,7 @@
       </ion-item>
       <ion-item *ngIf="productType == 'CPU'">
         <ion-label position="stacked">Boost Clock</ion-label>
+        <ion-note slot="end">GHz</ion-note>
         <ion-input
           type="number"
           ngModel
@@ -150,6 +156,7 @@
       </ion-item>
       <ion-item *ngIf="productType == 'Motherboard'">
         <ion-label position="stacked">Chipset</ion-label>
+        
         <ion-input
           type="text"
           ngModel

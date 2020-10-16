@@ -11,7 +11,6 @@ export class ShopService {
       id: "1",
       image_url:
         "https://ecs7.tokopedia.net/img/product-1/2020/7/7/9651507/9651507_ae33b43c-03ee-4613-be52-4e048dfd461f_992_992",
-      name: "AMD Ryzen 5 3600XT",
       stock: 20,
       price: 3887000,
       type: "CPU",
@@ -32,7 +31,6 @@ export class ShopService {
       id: "2",
       image_url:
         "https://ecs7.tokopedia.net/img/product-1/2020/8/18/9651507/9651507_0a280d69-5042-4126-9b7a-692cf10e29e3_500_500",
-      name: "GALAX Geforce RTX 2060",
       stock: 144,
       price: 5250000,
       type: "GPU",
@@ -53,8 +51,7 @@ export class ShopService {
       id: "3",
       image_url:
         "https://ecs7.tokopedia.net/img/product-1/2019/9/7/9651507/9651507_d1892152-82ab-4159-8f65-adbe77e583cf_800_800",
-      name: "ADATA XPG SPECTRIX D41 DDR4-3000",
-      stock: 2,
+      stock: 133,
       price: 2080000,
       type: "RAM",
       brand: "ADATA",
@@ -74,8 +71,7 @@ export class ShopService {
       id: "4",
       image_url:
         "https://ecs7.tokopedia.net/img/cache/700/product-1/2020/5/16/9651507/9651507_f5e679ec-c9d8-41e6-93f1-352276234ae8_1200_1200",
-      name: "ASRock Z490 Phantom Gaming Velocita",
-      stock: 144,
+      stock: 0,
       price: 2080000,
       type: "Motherboard",
       brand: "ASRock",
@@ -89,6 +85,26 @@ export class ShopService {
         size: null,
         chipset: "Intel Z490",
         compatibility: "Intel LGA1200",
+      },
+    },
+    {
+      id: "5",
+      image_url:
+        "https://ecs7.tokopedia.net/img/product-1/2020/6/9/9651507/9651507_db5df2ef-5ee2-4d85-a5c9-12a9e6f4991c_682_682",
+      stock: 2,
+      price: 2080000,
+      type: "CPU",
+      brand: "Intel",
+      model: "i5-10600",
+      description: {
+        base_clock: 3.3,
+        boost_clock: 4.8,
+        core: 6,
+        thread: 12,
+        speed: null,
+        size: null,
+        chipset: null,
+        compatibility: null,
       },
     },
   ];
