@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="navy">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -14,9 +14,9 @@
         <ion-list>
           <ion-img [src]="product.image_url" width="500"></ion-img>
 
-          <ion-item>
+          <ion-item lines="none">
             <ion-label class="ion-text-wrap">
-              <ion-text color="primary">
+              <ion-text color="navy">
                 <h2 style="font-weight: bold">
                   {{ product.brand }} {{ product.model}}
                 </h2>
@@ -28,7 +28,7 @@
 
           <ion-item>
             <ion-label>
-              <p color="black">Product Description</p>
+              <h2 color="dark" style="font-weight: bold">Deskripsi Produk</h2>
             </ion-label>
           </ion-item>
           <ion-item lines="none">

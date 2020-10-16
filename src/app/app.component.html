@@ -1,7 +1,7 @@
 <ion-app>
   <ion-menu side="start" menuId="shopMenu" contentId="main-menu">
     <ion-header>
-      <ion-toolbar color="tertiary">
+      <ion-toolbar color="pale-yellow">
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -22,11 +22,19 @@
         <ion-menu-toggle menu="shopMenu">
           <ion-item lines="none" routerLink="/about">
             <ion-icon name="information-circle" slot="start"></ion-icon>
-            <ion-label>About Us</ion-label>
+            <ion-label>About App</ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
     </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-item lines="none" (click)="closeMenu()">
+          <ion-icon name="log-out" slot="start"></ion-icon>
+          <ion-label>Exit</ion-label>
+        </ion-item>
+      </ion-toolbar>
+    </ion-footer>
   </ion-menu>
 
   <ion-router-outlet id="main-menu"></ion-router-outlet>
