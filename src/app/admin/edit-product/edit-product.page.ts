@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from "@ionic/angular";
 import { Product } from "src/app/model/product.model";
 import { ShopService } from "src/app/services/shop.service";
 
@@ -13,6 +13,7 @@ import { ShopService } from "src/app/services/shop.service";
 export class EditProductPage implements OnInit {
   product: Product;
   obj: any;
+  productExist = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private shopService: ShopService,
@@ -28,6 +29,9 @@ export class EditProductPage implements OnInit {
       }
       const shopId = paramMap.get("id");
       this.product = this.shopService.getDetailProduct(shopId);
+      if (this.product != null || this.product != undefined) {
+        this.productExist = true;
+      }
     });
   }
 
@@ -35,7 +39,7 @@ export class EditProductPage implements OnInit {
     this.confirmEdit(form);
   }
 
-  editProduct(form: NgForm){
+  editProduct(form: NgForm) {
     this.obj = {
       id: this.product.id,
       image_url: form.value.url,
@@ -58,7 +62,7 @@ export class EditProductPage implements OnInit {
 
     this.shopService.editProduct(this.obj, this.product.id);
     this.router.navigate(["/admin"]);
-    
+
     this.presentToast();
   }
 

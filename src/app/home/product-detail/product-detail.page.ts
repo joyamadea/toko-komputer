@@ -10,6 +10,7 @@ import { ShopService } from "src/app/services/shop.service";
 })
 export class ProductDetailPage implements OnInit {
   product: Product;
+  productExist = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private shopService: ShopService
@@ -22,6 +23,9 @@ export class ProductDetailPage implements OnInit {
       }
       const shopId = paramMap.get("id");
       this.product = this.shopService.getDetailProduct(shopId);
+      if (this.product != null || this.product != undefined) {
+        this.productExist = true;
+      }
     });
   }
 }

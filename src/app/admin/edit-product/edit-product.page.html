@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" *ngIf="productExist">
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Jenis Barang</ion-label>
@@ -21,10 +21,10 @@
           required
           type
         >
-        <ion-select-option value="CPU">CPU</ion-select-option>
-        <ion-select-option value="GPU">GPU</ion-select-option>
-        <ion-select-option value="RAM">RAM</ion-select-option>
-        <ion-select-option value="Motherboard">Motherboard</ion-select-option>
+          <ion-select-option value="CPU">CPU</ion-select-option>
+          <ion-select-option value="GPU">GPU</ion-select-option>
+          <ion-select-option value="RAM">RAM</ion-select-option>
+          <ion-select-option value="Motherboard">Motherboard</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
@@ -177,8 +177,23 @@
       </ion-item>
     </ion-list>
 
-    <ion-button color="pale-yellow" type="submit" [disabled]="!form.valid" expand="block" class="ion-text-capitalize"
+    <ion-button
+      color="pale-yellow"
+      type="submit"
+      [disabled]="!form.valid"
+      expand="block"
+      class="ion-text-capitalize"
       >Edit Product</ion-button
     >
   </form>
+
+  <ion-grid *ngIf="!productExist">
+    <ion-row>
+      <ion-col>
+        <div id="container">
+          <ion-title style="color: #666666">Produk tidak tersedia</ion-title>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
